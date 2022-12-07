@@ -5,9 +5,9 @@ from aiogram import Bot, Dispatcher
 
 from data.config import ADMINS
 
-async def on_startup_notify(dp: Dispatcher, bot: Bot):
+async def on_startup_notify(dp: Dispatcher):
     
-    me = await bot.get_me()
+    me = await dp.bot.get_me()
     
     for admin in ADMINS:
         try:

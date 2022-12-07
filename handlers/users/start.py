@@ -1,11 +1,11 @@
-from aiogram import Dispatcher, types
-from aiogram.dispatcher.filters.builtin import CommandStart
+from aiogram import types
+import logging
+
+from loader import dp
 
 
+@dp.message_handler(commands=['start', 'help'])
+async def bot_start(message: types.Message):
+    logging.info("Command start")
+    await message.answer(f"Привет, {message.from_user.full_name}!")
 
-async def bot_start(msg: types.Message):
-    await msg.answer(f"Привет, {msg.from_user.full_name}!")
-
-
-def register_start(dp: Dispatcher):
-    dp.register_message_handler(bot_start, CommandStart())
